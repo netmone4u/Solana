@@ -1,0 +1,27 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string csvFilePath = "example.csv";
+
+        if (!File.Exists(csvFilePath))
+        {
+            Console.WriteLine("File not found.");
+            return;
+        }
+
+        string[] lines = File.ReadAllLines(csvFilePath);
+        foreach (var line in lines)
+        {
+            string[] fields = line.Split(',');
+            foreach (var field in fields)
+            {
+                Console.Write(field + "\t");
+            }
+            Console.WriteLine();
+        }
+    }
+}
